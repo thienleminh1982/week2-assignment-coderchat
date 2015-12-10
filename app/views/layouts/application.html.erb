@@ -20,7 +20,12 @@
           <%= link_to 'Sign Up', new_user_path, {:class => 'nav-link'} %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Sign In', sessions_new_path, {:class => 'nav-link'} %>
+          <% if signed_in? %>
+              <%= link_to 'Sign Out', logout_path, {:class => 'nav-link'} %>
+          <% else %>
+              <%= link_to 'Sign In', sessions_new_path, {:class => 'nav-link'} %>
+          <% end %>
+
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%= users_path %>">Browse Profiles</a>
