@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
+  def require_login
+    unless signed_in?
+      flash[:warning] = 'You must sign in to see this page!'
+      redirect_to sessions_new_path
+    end
+  end
 end

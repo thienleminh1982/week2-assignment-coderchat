@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     end
 
     def index
+        require_login
         @users = User.all.shuffle
     end
 
