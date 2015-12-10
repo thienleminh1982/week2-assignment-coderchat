@@ -15,8 +15,10 @@ class UsersController < ApplicationController
             if @user.save
                 session[:user_id] = @user.id
 
-                format.html {redirect_to users_path, alert: 'Created user!'}
+                flash[:success] = 'New user created successfully!'
+                format.html {redirect_to users_path}
             else
+                flash[:error] = 'Cannot create new user!'
                 format.html { render :action => :new}
             end
         end

@@ -6,6 +6,10 @@
   <%= csrf_meta_tag %>
 </head>
 <body class="<%= controller_name%> <%= action_name %>">
+  <div class="nofif">
+    <%= flash_messages %>
+  </div>
+
   <nav class="navbar navbar-light bg-faded">
 
     <!-- Toggle Button -->
