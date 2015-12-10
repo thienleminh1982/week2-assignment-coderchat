@@ -1,0 +1,11 @@
+<%= form_for(User.new, url: login_path) do |f| %>
+    <div class="form-group">
+        <%= f.text_field 'email', class: 'form-control', placeholder: 'Your E-mail' %>
+    </div>
+    <div class="form-group">
+        <%= f.password_field 'password', class: 'form-control', placeholder: 'Password' %>
+    </div>
+    <div class="form-group">
+            <%= f.submit 'Sign In', class: 'btn btn-block btn-primary' %>
+    </div>    
+<% end %>

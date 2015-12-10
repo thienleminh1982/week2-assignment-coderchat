@@ -5,7 +5,7 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body class="<%= controller_name%> <%= action_name %>">
   <nav class="navbar navbar-light bg-faded">
 
     <!-- Toggle Button -->
@@ -17,10 +17,10 @@
       <a class="navbar-brand" href="/"><%= image_tag 'logo-small' %></a>
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
+          <%= link_to 'Sign Up', new_user_path, {:class => 'nav-link'} %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign In</a>
+          <%= link_to 'Sign In', sessions_new_path, {:class => 'nav-link'} %>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%= users_path %>">Browse Profiles</a>
