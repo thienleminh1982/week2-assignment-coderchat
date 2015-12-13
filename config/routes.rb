@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :messages
   get 'sessions/new'
 
   post 'login' => 'sessions#create'
@@ -9,6 +10,9 @@ Rails.application.routes.draw do
 
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
+  get 'sent_messages', to: 'messages#sent'
+  get 'friends', to: 'users#friend_list'
+  get 'manage_friends', to: 'users#manage_friends'
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

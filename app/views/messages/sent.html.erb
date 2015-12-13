@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing sent messages</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Send to</th>
+    <th>Content</th>
+    <th>Is read</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sent_messages.each do |message| %>
+      <tr>
+        <td><%= message.recipient.name %></td>
+        <td><%= message.content %></td>
+        <td><%= message.is_read %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

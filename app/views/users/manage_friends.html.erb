@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users available</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Image</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users_not_in_friend_list.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><img src="<%= user.image_url %>" alt="Image of user"/></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</br>
+
+<h1>List of friends</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Block status</th>
+    <th>Image</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @friends_of_current_user.each do |friend| %>
+      <tr>
+        <td><%= friend.name %></td>
+        <td><%= friend.email %></td>
+        <td><%= @current_user.is_friend_blocked(friend.id) %></td>
+        <td><img src="<%= friend.image_url %>" alt="Image of user"/></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

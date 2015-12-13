@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id])
   end
 
+
   def signed_in?
     current_user
   end
@@ -20,4 +21,5 @@ class ApplicationController < ActionController::Base
       redirect_to sessions_new_path
     end
   end
+
 end

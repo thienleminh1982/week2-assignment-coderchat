@@ -21,19 +21,35 @@
       <a class="navbar-brand" href="/"><%= image_tag 'logo-small' %></a>
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <%= link_to 'Sign Up', new_user_path, {:class => 'nav-link'} %>
-        </li>
-        <li class="nav-item">
           <% if signed_in? %>
-              <%= link_to 'Sign Out', logout_path, {:class => 'nav-link'} %>
-          <% else %>
-              <%= link_to 'Sign In', sessions_new_path, {:class => 'nav-link'} %>
-          <% end %>
+            <li class="nav-item">
+              <%= link_to 'Incoming messages', messages_path, {:class => 'nav-link'} %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'New message', new_message_path, {:class => 'nav-link'} %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sent messages', sent_messages_path, {:class => 'nav-link'} %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= users_path %>">Browse Profiles</a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Friend list', friends_path, {:class => 'nav-link'} %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Manage friends', manage_friends_path, {:class => 'nav-link'} %>
+            </li>
+            <%= link_to 'Sign Out', logout_path, {:class => 'nav-link'} %>
+        <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_path, {:class => 'nav-link'} %>
+            </li>
+            <%= link_to 'Sign In', sessions_new_path, {:class => 'nav-link'} %>
+        <% end %>
 
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= users_path %>">Browse Profiles</a>
-        </li>
+
       </ul>
     </div>
   </nav>
