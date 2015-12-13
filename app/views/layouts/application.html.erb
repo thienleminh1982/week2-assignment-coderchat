@@ -23,6 +23,9 @@
         <li class="nav-item">
           <% if signed_in? %>
             <li class="nav-item">
+              Logged in as: [<%= @current_user.name %>]
+            </li>
+            <li class="nav-item">
               <%= link_to 'Incoming messages', messages_path, {:class => 'nav-link'} %>
             </li>
             <li class="nav-item">
@@ -30,12 +33,6 @@
             </li>
             <li class="nav-item">
               <%= link_to 'Sent messages', sent_messages_path, {:class => 'nav-link'} %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= users_path %>">Browse Profiles</a>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Friend list', friends_path, {:class => 'nav-link'} %>
             </li>
             <li class="nav-item">
               <%= link_to 'Manage friends', manage_friends_path, {:class => 'nav-link'} %>
