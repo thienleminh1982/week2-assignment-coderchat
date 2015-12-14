@@ -1,11 +1,17 @@
+<% @is_blocked = @current_user.is_friend_blocked(friend.id) %>
 <div class="col-xs-12 col-md-4">
   <div class="card card-<%= cycle('male', 'female') %>">
-    <%= image_tag friend.try(:image_url), width: '150px', height: '150px' %>
+    <% if @is_blocked %>
+        <%= image_tag 'block', width: '150px', height: '150px' %>
+    <% else %>
+        <%= image_tag friend.try(:image_url), width: '150px', height: '150px' %>
+    <% end %>
+
     <div class="card-block">
       <h4 class="card-title"><%= friend.try(:name) %></h4>
       <a href="<%= manage_friends_path %>?remove_friend=<%= friend.try(:id) %>" class="btn btn-primary">Remove friend</a>
 
-      <% if @current_user.is_friend_blocked(friend.id) %>
+      <% if @is_blocked %>
           <a href="<%= manage_friends_path %>?set_block=false&friend_id=<%= friend.try(:id) %>" class="btn btn-success">Unblock</a>
       <% else %>
           <a href="<%= manage_friends_path %>?set_block=true&friend_id=<%= friend.try(:id) %>" class="btn btn-danger">Block</a>

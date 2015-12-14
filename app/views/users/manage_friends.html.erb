@@ -1,9 +1,9 @@
 <% unless @friends_of_current_user.empty? %>
     <div class="container users-index">
       <h3>Your friend list</h3>
-      <% @friends_of_current_user.in_groups_of(3) do |group| %>
+      <% @friends_of_current_user.in_groups_of(3) do |friend| %>
           <div class="row">
-            <%= render partial: 'friend', collection: group.compact %>
+            <%= render partial: 'friend', collection: friend.compact %>
           </div>
       <% end %>
     </div>

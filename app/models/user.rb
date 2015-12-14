@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :friendships
   has_many :friends, class_name: 'User', through: :friendships
+  after_initialize :default_values
 
   def received_messages
-    # TODO: filter out the message from blocked friend
+    # NOTE: the messages from blocked friends is hidden from messages/index.html.erb
     Message.where(recipient: self).order('created_at DESC')
   end
 
@@ -22,42 +23,52 @@ class User < ActiveRecord::Base
     Message.where(sender: self).order('created_at DESC')
   end
 
-  # Check the friend of this user if he is blocked or not.
-  def is_friend_blocked(friend_id)
-    find_friend(friend_id)
-    @friendship.is_blocked
-  end
-
-  def set_block_friend(friend_id, blocked_value)
-    find_friend(friend_id)
-    unless @friendship.nil?
-      @friendship.update(is_blocked: blocked_value)
-    end
-  end
-
   # Get the list of users who are not in the friend list
   # NOTE: Also exclude this user from this list
   def users_not_in_friend_list
     User.where.not(id: self.friends.ids << self.id)
   end
 
+  # Check the friend of this user if he is blocked or not.
+  def is_friend_blocked(friend_id)
+    find_friendship(friend_id)
+    unless @friendship.nil?
+      @friendship.is_blocked
+    end
+  end
+
+  def set_block_friend(friend_id, blocked_value)
+    find_friendship(friend_id)
+    unless @friendship.nil?
+      @friendship.update(is_blocked: blocked_value)
+    end
+  end
+
   def add_friendship(friend_id)
-    find_friend(friend_id)
+    find_friendship(friend_id)
     if @friendship.nil?
       self.friendships.create(friend_id: friend_id)
     end
   end
 
   def remove_friendship(friend_id)
-    #@friendship = Friendship.where(user_id: self.id,friend_id:friend_id).first
-    find_friend(friend_id)
+    find_friendship(friend_id)
     unless @friendship.nil?
       @friendship.destroy
     end
   end
 
-  def find_friend(friend_id)
-    @friendship ||= self.friendships.where(friend_id: friend_id).first
+  def find_friendship(friend_id)
+    @friendship = self.friendships.find_by_friend_id(friend_id)
   end
 
+  ## Filter out the blocked friends so the user will NOT able to send message
+  def unblocked_friends
+    self.friends.where("friendships.is_blocked=false")
+  end
+
+  private
+  def default_values
+    self.image_url ||= 'smile'
+  end
 end

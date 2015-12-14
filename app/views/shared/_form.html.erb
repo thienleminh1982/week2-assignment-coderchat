@@ -1,19 +1,20 @@
-<%= form_for(User.new) do |f| %>
+<%= form_for(User.new, class: "form-signin") do |f| %>
+    <h2 class="form-signin-heading">Sign up form</h2>
     <div class="form-group">
-        <%= f.text_field 'email', class: 'form-control', placeholder: 'Your E-mail' %>
+        <%= f.text_field 'email', class: 'form-control', placeholder: 'Your E-mail', required: '', autofocus: '' %>
     </div>
      <div class="form-group">
-        <%= f.text_field 'name', class: 'form-control', placeholder: 'Name' %>
+        <%= f.text_field 'name', class: 'form-control', placeholder: 'Name', required: '', autofocus: ''  %>
     </div>
     <div class="form-group">
         <div class="half-width">
-            <%= f.password_field 'password', class: 'form-control', placeholder: 'Password' %>
+            <%= f.password_field 'password', class: 'form-control', placeholder: 'Password',required: '', autofocus: '' %>
         </div>
         <div class="half-width">
-            <%= f.password_field 'password_confirmation', class: 'form-control', placeholder: 'Confirmation' %>          
+            <%= f.password_field 'password_confirmation', class: 'form-control', placeholder: 'Confirmation', required: '', autofocus: ''  %>
         </div>  
     </div>
     <div class="form-group">
-            <%= f.submit 'Sign Up', class: 'btn btn-block btn-info' %>
+            <%= f.submit 'Sign Up', class: 'btn btn-lg btn-primary btn-block' %>
     </div>    
 <% end %>

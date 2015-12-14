@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :current_user
 
   # GET /messages
   # GET /messages.json
@@ -12,17 +13,17 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
+    # Once shown, MUST update the message as read.
+    @message.set_as_read
   end
 
   def sent
-    current_user
     @sent_messages = @current_user.sent_messages
   end
 
   # GET /messages/new
   def new
-    current_user
-    @friends_of_current_user = @current_user.friends
+    @friends_of_current_user = @current_user.unblocked_friends
     @message = Message.new
   end
 
@@ -33,7 +34,6 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    current_user
     @message = Message.new(message_params)
     @message.sender_id = @current_user.id
 

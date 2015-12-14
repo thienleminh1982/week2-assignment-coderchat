@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8" >
+      <div class="card" >
+        <div class="card-header" align="middle">
+          <%= image_tag 'smile', width: '50px', height: '50px', alt: 'User_photo'%>
+          <h2><%= @message.sender.name %></h2>
+        </div>
+        <div class="card-block">
+          <%= @message.content %>
+          </div>
+          <small><i>Message read at: <%= @message.updated_at.strftime("%A, %d %B %Y, %H:%M") %></i></small>
+        </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @message.content %>
-</p>
+        <div class="card-footer" align="middle">
+          <%= link_to 'Back to messages', messages_path, class: 'btn btn-primary' %>
+        </div>
 
-<p>
-  <strong>Sender:</strong>
-  <%= @message.sender %>
-</p>
+      </div>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
 
-<p>
-  <strong>Recipient:</strong>
-  <%= @message.recipient %>
-</p>
 
-<p>
-  <strong>Is read:</strong>
-  <%= @message.is_read %>
-</p>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+

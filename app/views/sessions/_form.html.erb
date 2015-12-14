@@ -1,11 +1,9 @@
-<%= form_for(User.new, url: login_path) do |f| %>
-    <div class="form-group">
-        <%= f.text_field 'email', class: 'form-control', placeholder: 'Your E-mail' %>
-    </div>
-    <div class="form-group">
-        <%= f.password_field 'password', class: 'form-control', placeholder: 'Password' %>
-    </div>
-    <div class="form-group">
-            <%= f.submit 'Sign In', class: 'btn btn-block btn-primary' %>
-    </div>    
+<%= form_for(User.new, url: login_path, class: "form-signin") do |f| %>
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <%= f.text_field 'email', class: 'form-control', placeholder: 'Your E-mail', required: '', autofocus: '' %>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <%= f.password_field 'password', class: 'form-control', placeholder: 'Password', required: '' %>
+  </br>
+  <%= f.submit 'Sign In', class: 'btn btn-lg btn-primary btn-block' %>
 <% end %>

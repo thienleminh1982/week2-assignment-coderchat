@@ -4,6 +4,10 @@ class Message < ActiveRecord::Base
 
   after_initialize :default_values
 
+  def set_as_read
+    self.update(is_read: true)
+  end
+
   private
     def default_values
       self.is_read ||= false
