@@ -39,7 +39,7 @@ or https://www.filepicker.com/.
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](https://github.com/thienleminh1982/ror-week1-assignment/blob/master/coderchat_walkthrough.gif)
+![Video Walkthrough](https://github.com/thienleminh1982/week2-assignment-coderchat/blob/master/coderchat_walkthrough.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
