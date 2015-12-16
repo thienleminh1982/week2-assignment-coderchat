@@ -4,9 +4,9 @@
 
 Submitted by: **Minh-Thien Le**
 
-Time spent: **** hours spent in total
+Time spent: **26** hours spent in total
 
-URL: ****
+URL: **https://calm-crag-9058.herokuapp.com/**
 
 ## User Stories
 
@@ -39,13 +39,14 @@ or https://www.filepicker.com/.
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough]()
+![Video Walkthrough](https://github.com/thienleminh1982/week2-assignment-coderchat/blob/master/coderchat_walkthrough.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
-Difficulties
-- Association between tables - in Rails..
+* Association joining between tables and how Rails implements with has_many, has_many_belongs_to...a little confused me.
+* UI: css of dropdown to select friend to send message. It seems I can't find a suitable css style when I use the f.collection_select from Rails, therefore the dropdown looks now ugly in my app. I'll appreciate if you have suggestion.
+* Rails console is very useful to check my methods in model working as expected. Many thanks Harley for showing this in the class.
 
 ## License
 
