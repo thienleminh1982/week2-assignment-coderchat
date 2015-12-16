@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-sm-2">
+
   </div>
   <div class="col-sm-8">
     <%= form_for(@message, class: "form-signin") do |f| %>
@@ -17,10 +18,13 @@
 
         <div class="card">
           <div class="card-header">
-            <%= f.collection_select :recipient_id, @friends_of_current_user, :id, :name, include_blank: false, width: '100%' %>
+            <select class="form-control" name="message[recipient_id]">
+              <% @friends_of_current_user.each  do  |op_value| %>
+                  <option value="<%= op_value.id %>"><%= op_value.name %></option>
+              <% end %>
+            </select>
           </div>
           <div class="card-block">
-
             <%= f.text_area :content, class: 'form-control', required: '', autofocus: '' %>
           </div>
         </div>
